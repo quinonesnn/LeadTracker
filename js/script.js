@@ -36,7 +36,10 @@ inputEl.addEventListener("keypress", function(e){
         addItem()
     }
 })
-inputBtn.addEventListener("click", addItem())
+
+inputBtn.addEventListener("click", function(){
+    addItem()
+})
 
 tabBtn.addEventListener("click", function(){    
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
