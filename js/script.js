@@ -24,13 +24,19 @@ function render(leads) {
     }
     ulEl.innerHTML = listItems
 }
-
-inputBtn.addEventListener("click", function() {
+function addItem(){
     myLeads.push(inputEl.value)
     inputEl.value = ""
     localStorage.setItem("myLeads", JSON.stringify(myLeads) )
     render(myLeads)
+}
+
+inputEl.addEventListener("keypress", function(e){
+    if(e.key === 'Enter'){
+        addItem()
+    }
 })
+inputBtn.addEventListener("click", addItem())
 
 tabBtn.addEventListener("click", function(){    
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
